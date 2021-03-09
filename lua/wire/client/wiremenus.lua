@@ -5,10 +5,10 @@ local Categories = {
 	"Detection",
 	"Input, Output",
 	-- "Vehicle Control",
-	"Physics",
+	-- "Physics",
 	"Other",
 	-- "Memory",
-	"Advanced",
+	-- "Advanced",
 	"Tools",
 	"Options",
 }
