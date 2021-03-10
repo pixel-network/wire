@@ -81,6 +81,10 @@ function PANEL:SetModelList( list, cvar )
 	self:SortByMember("Model", false)
 end
 
+function PANEL:Paint(w,h)
+	return derma.SkinHook( "Paint", "Panel", self, w, h)
+end 
+
 derma.DefineControl( "DWireModelSelect", "", PANEL, "DPanelSelect" )
 
 --
