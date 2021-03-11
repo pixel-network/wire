@@ -33,7 +33,7 @@ if SERVER then
 
 	-- client includes
 	AddCSLuaFile("wire/client/cl_wirelib.lua")
-	AddCSLuaFile("wire/client/cl_modelplug.lua")
+	AddCSLuaFile("wire/client/sh_modelplug.lua")
 	AddCSLuaFile("wire/client/cl_wire_map_interface.lua")
 	AddCSLuaFile("wire/client/wiredermaexts.lua")
 	AddCSLuaFile("wire/client/wiremenus.lua")
@@ -86,6 +86,7 @@ include("wire/timedpairs.lua")
 include("wire/default_data_decompressor.lua")
 include("wire/flir.lua")
 include("wire/von.lua")
+include("wire/client/sh_modelplug.lua")
 
 -- server includes
 if SERVER then
@@ -98,7 +99,6 @@ end
 -- client includes
 if CLIENT then
 	include("wire/client/cl_wirelib.lua")
-	include("wire/client/cl_modelplug.lua")
 	include("wire/client/cl_wire_map_interface.lua")
 	include("wire/client/wiredermaexts.lua")
 	include("wire/client/wiremenus.lua")
