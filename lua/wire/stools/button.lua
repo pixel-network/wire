@@ -1,5 +1,5 @@
 WireToolSetup.setCategory( "Input, Output" )
-WireToolSetup.open( "button", "Button", "gmod_wire_button", nil, "Buttons" )
+WireToolSetup.open( "button", "Button", "gmod_wire_button", nil, "Buttons", "Wire_button_Models" )
 
 if CLIENT then
 	language.Add( "tool.wire_button.name", "Button Tool (Wire)" )
