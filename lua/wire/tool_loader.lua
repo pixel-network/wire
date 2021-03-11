@@ -27,6 +27,13 @@ WireToolObj.Tab			= "Wire"
 
 -- optional LeftClick tool function for basic tools that just place/weld a device [default]
 function WireToolObj:LeftClick( trace )
+	if self.ModelList and not list.HasEntry(self.ModelList, self:GetModel()) then
+		if CLIENT then
+			chat.AddText("This model isn't available.")
+		end
+		return false
+	end
+
 	if not trace.HitPos or trace.Entity:IsPlayer() or trace.Entity:IsNPC() or (SERVER and not util.IsValidPhysicsObject( trace.Entity, trace.PhysicsBone )) then return false end
 	if self.NoLeftOnClass and trace.HitNonWorld and (trace.Entity:GetClass() == self.WireClass or NoGhostOn(self, trace)) then return false end
 
@@ -469,7 +476,7 @@ end
 --  s_name: Proper name for the tool
 --  s_class: For tools that make a device. Should begin with "gmod_wire_". Can be nil if not using WireToolObj.LeftClick or WireToolSetup.BaseLang
 --  f_toolmakeent: Server side function for making the tools device. Can be nil if not using WireToolObj.LeftClick
-function WireToolSetup.open( s_mode, s_name, s_class, f_toolmakeent, s_pluralname )
+function WireToolSetup.open( s_mode, s_name, s_class, f_toolmakeent, s_pluralname, s_modellist)
 	-- close the previous TOOL if not done so already
 	if TOOL then WireToolSetup.close() end
 
@@ -484,6 +491,8 @@ function WireToolSetup.open( s_mode, s_name, s_class, f_toolmakeent, s_pluralnam
 	TOOL.Name			= s_name
 	TOOL.PluralName		= s_pluralname
 	TOOL.WireClass		= s_class
+	TOOL.ModelList = s_modellist
+
 	if f_toolmakeent then
 		TOOL.LeftClick_Make = f_toolmakeent
 	end
