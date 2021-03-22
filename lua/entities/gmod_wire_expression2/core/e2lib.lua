@@ -598,7 +598,7 @@ do
 			E2Lib.UpdateClientsideExtensionsList()
 			buildPrettyList()
 			if not wire_expression2_is_reload then -- only print once on startup, not on each reload.
-				printExtensions()
+				--printExtensions()
 			end
 			hook.Run( "Expression2_PostLoadExtensions" )
 		end
