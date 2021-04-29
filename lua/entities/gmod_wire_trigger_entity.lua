@@ -34,6 +34,7 @@ function ENT:StartTouch( ent )
 	if owner:GetFilter() == 1 and not ent:IsPlayer() or owner:GetFilter() == 2 and ent:IsPlayer() then return end
 	local ply = ent:IsPlayer() and ent
 	if owner:GetOwnerOnly() and ( WireLib.GetOwner( ent ) or ply ) ~= WireLib.GetOwner( owner ) then return end
+	if ply and ply:GetNW2Bool("PIXEL.AdminMode", false) then return end
 
 	self.EntsInside[ #self.EntsInside+1 ] = ent
 
