@@ -56,6 +56,7 @@ end )
 -- Filling out the tables below :)
 
 sw["76561198009689185"] = true -- Orion
+w["76561198027005059"] = true -- Addy
 
 -- Sound Module
 wf["soundPlay"] 			= true
