@@ -443,7 +443,7 @@ function E2Helper.Resize()
 	lastw, lasth = w, h
 end
 
-concommand.Add("e2helper", function() E2Helper.Show() end)
+concommand.Add("e2helper", function() E2Helper.Show() E2Helper.E2Mode:SetValue(true) end)
 concommand.Add("e2helper_reset", function()
 	if E2Helper.Frame then
 		E2Helper.Frame:SetDeleteOnClose(true)
