@@ -69,6 +69,8 @@ wf["soundDuration"] 		= true
 -- Remote Module
 wf["remoteSetCode"] 		= true 
 wf["remoteUpload"] 			= true 
+wf["getCode"] 				= true
+wf["getCodeIncludes"] 		= true
 
 -- HTTP Module
 wf["httpCanRequest"] 		= true
