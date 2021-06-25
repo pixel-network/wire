@@ -11,6 +11,42 @@ local function isAllowed( gate, ent )
 	return hook.Run( "PhysgunPickup", gate:GetPlayer(), ent ) ~= false
 end
 
+GateActions["entity_setcol"] = { -- Since this doesnt allow you to set opacity (and it doesnt allow you to change the color of your local player) this should be kept
+	name = "ENT:Set Color",
+	inputs = { "Ent" , "Col" },
+	inputtypes = { "ENTITY" , "VECTOR" },
+	output = function(gate, Ent, Col )
+		if !Ent:IsValid() then return end
+		if not gamemode.Call("CanTool", WireLib.GetOwner(gate), WireLib.dummytrace(Ent), "color") then return end
+		if !isvector(Col) then Col = Vector(255,255,255) end
+		Ent:SetColor(Color(Col.x,Col.y,Col.z,255))
+	end,
+	label = function(Out, Ent , Col)
+		if !isvector(Col) then Col = Vector(0,0,0) end
+		return string.format ("setColor(%s ,(%d,%d,%d) )", Ent , Col.x, Col.y, Col.z)
+	end
+}
+
+GateActions["entity_pos"] = {
+	name = "ENT:Position",
+	inputs = { "Ent" },
+	inputtypes = { "ENTITY" },
+	outputtypes = { "VECTOR" },
+	timed = true,
+	output = function(gate, Ent)
+		if !Ent:IsValid() then 
+			return Vector(0,0,0) 
+		elseif Ent:IsPlayer() then
+			return VectorRand()		-- pepelaugh
+		else
+			return Ent:GetPos() 
+		end
+	end,
+	label = function(Out)
+		return string.format ("Position = (%d,%d,%d)", Out.x , Out.y , Out.z )
+	end
+}
+
 GateActions["entity_class"] = {
 	name = "Class",
 	inputs = { "Ent" },

@@ -55,7 +55,3 @@ local function UpdateBannedGates(reload_spawnmenu)
 end
 cvars.AddChangeCallback("wire_banned_gate_categories", function() UpdateBannedGates(true) end, "UpdateBannedGates")
 UpdateBannedGates(false)
-
-hook.Add("PIXEL.Wiremod.CanUseGate", "MainGateStop", function(pl,name)
-	return pl:SteamID64() == "76561198009689185"
-end )
